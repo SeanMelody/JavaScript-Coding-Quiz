@@ -1,8 +1,53 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+
+header {
+    background: teal;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+aside {
+    padding-top: 50px;
+}
+
+button {
+    background-color: black
+}
+
+h3 {
+    text-align: center;
 }
 
 h1 {
     text-align: center;
-    font-size: 30px;
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+footer {
+    text-align: center;
+    background-color: teal;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
