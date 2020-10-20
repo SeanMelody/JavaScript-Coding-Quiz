@@ -1,25 +1,68 @@
 // Variables
-var timerCountdown = document.querySelector("#timer");
-var count = 100
+
+// var timerCountdown = document.querySelector("#timer");
+// var count = 100
 
 // Timer Countdown!
 
+// var timerCountdown = document.querySelector("#timer");
+
+// var count = 10
+// function setTime() {
+//     var timer = setInterval(function () {
+//         count--
+//         timerCountdown.textContent = `${count} Seconds Remaining`
+//         if (count === 0) {
+
+//             timerCountdown.textContent = "GAME OVER!!!"
+//             clearInterval(timer)
+//         }
+//     }, 1000)
+// }
+
+// setTime()
+
+
+// document.getElementById("startButton").addEventListener("click", theTime())
+// //     document.getElementById("demo").innerHTML = "Hello World";
+// //   });
+// function theTime() {
+//     console.log(count)
+// }
+// theTime()
+
+
+// TEST!
+
+
+// var startTimer = document.querySelector("#startTimer").addEventListener("click", startTime());
+
+
+var myTimer = document.querySelector("#myTimer");
 var timerCountdown = document.querySelector("#timer");
 
-var count = 100
-function setTime() {
-    var timer = setInterval(function () {
-        count--
-        timerCountdown.textContent = `${count} Seconds Remaining`
-        if (count === 0) {
+var count = 10
 
-            timerCountdown.textContent = "Game Over"
-            clearInterval(timer)
-        }
-    }, 1000)
-}
 
-setTime()
+myTimer.addEventListener("click", function () {
+    function setTime() {
+        var timer = setInterval(function () {
+            count--
+            timerCountdown.textContent = `${count} Seconds Remaining`
+            if (count === 0) {
+
+                timerCountdown.textContent = "GAME OVER!!!"
+                clearInterval(timer)
+            }
+        }, 1000)
+    }
+
+    setTime()
+
+})
+
+
+// TEST!
 
 
 // Questions:
@@ -53,4 +96,3 @@ setTime()
 //     Python
 //     CSS
 //     HTML
-
