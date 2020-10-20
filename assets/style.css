@@ -53,6 +53,20 @@ p {
     text-align: center;
 }
 
+.timer {
+    text-align: center;
+    font-size: 24px;
+}
+
+#timer {
+    text-align: center;
+    font-size: 24px;
+}
+
+#questions {
+    text-align: center;
+}
+
 content h3{
     padding-top: 50px;
 }

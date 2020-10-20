@@ -1,47 +1,26 @@
-var h2Message = document.querySelector("#message");
-var timer = document.querySelector(".timer")
+// Variables
+var timerCountdown = document.querySelector("#timer");
+var count = 100
 
-var thing = function () {
-    console.log("thing")
+// Timer Countdown!
+
+var timerCountdown = document.querySelector("#timer");
+
+var count = 100
+function setTime() {
+    var timer = setInterval(function () {
+        count--
+        timerCountdown.textContent = `${count} Seconds Remaining`
+        if (count === 0) {
+
+            timerCountdown.textContent = "Game Over"
+            clearInterval(timer)
+        }
+    }, 1000)
 }
 
+setTime()
 
-
-// var count = 100
-// function setTime() {
-//     var count = 10
-//     var timer = setInterval(function () {
-//         count--
-//         h2Message.textContent = (count)
-//         if (count === 0) {
-//             h2Message.textContent = "Game Over"
-//             clearInterval(timer)
-//         }
-//     }, 100)
-// }
-
-// setTime()
-
-var timer = 10;
-var timerEl = document.getElementById("time");
-
-// function startQuiz() {
-//     var timer = setInterval(clockTick, 100)
-// }
-
-
-function clockTick() {
-
-    timer.textContent = time;
-    // update time
-    time--;
-    timerEl.textContent = time;
-
-    // check if user ran out of time
-    if (time <= 0) {
-        quizEnd();
-    }
-}
 
 // Questions:
 // 1. What is the link you use in HTML for your Javascript File

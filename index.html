@@ -21,38 +21,36 @@
         </nav>
     </header>
 
-    <!-- <content class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>View The High Scores<h2>
-            </div>
-
-        </div>
-
-    </content> -->
-
     <aside>
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <h3>Start the Quiz</h3>
                     <p>Press the Start Button to test your Javascript Skills!</p>
-                    <button type="button" id="startBtn" onclick="startQuiz()"
-                        class="btn btn-info bg-danger row col-md-12">Start</button>
+
+                    <!-- <button type="button" id="startButton" onclick="startQuiz()"> Start the Quiz!</button> -->
+                    <button type="button" id="startButton" class="btn btn-info bg-danger row col-md-12">Start</button>
                 </div>
                 <div class="col-md-4">
-                    <h2 id="message">Countdown Timer</h2>
-                    <div class="timer row col-md-12">Time: <span id="time">0</span></div>
+                    <h2>Countdown Timer:</h2>
+                    <div class="timer row col-md-12" id="timer">100 Seconds Remaining<span>
+                        </span></div>
                 </div>
             </div>
 
         </div>
 
     </aside>
-
+    <br>
     <content>
-        <div id="questions"></div>
-        <div id="choices"></div>
+        <div class="container">
+            <div class="row col-md-8">
+                <div class="col-md-4">
+                    <div class="questions" id="questions">Questions:</div>
+                    <div class="choices" id="choices"></div>
+                </div>
+            </div>
+        </div>
 
     </content>
 
