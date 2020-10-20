@@ -53,6 +53,17 @@ p {
     text-align: center;
 }
 
+button {
+    display: block;
+    margin: 10px;
+    color: white;
+    font-size: 100%;
+    background-color: teal;
+    border-radius: 5px;
+    padding: 10px 10px;
+    border: 0;
+}
+
 .timer {
     text-align: center;
     font-size: 24px;
@@ -65,6 +76,11 @@ p {
 
 #questions {
     text-align: center;
+    font-size: 24px;
+}
+
+#choices {
+    font-size: 18px;
 }
 
 content h3{

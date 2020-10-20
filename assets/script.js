@@ -2,7 +2,7 @@
 var myTimer = document.querySelector("#myTimer");
 var timerCountdown = document.querySelector("#timer");
 
-var count = 10
+var count = 100
 
 // Timer Function
 myTimer.addEventListener("click", function () {
@@ -28,18 +28,17 @@ myTimer.addEventListener("click", function () {
 
 const questions = [
     {
-        question: "What is the link you use in HTML for your Javascript File?",
-        choices: ['<script src="./script.js"></script>', '<script My Javascript goes here ></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
-        answer: 1
-    },
-
-    {
         title: "How do you get an element by it's ID?",
         choices: ['getElementbyID', 'getID', 'idGet', '#getElement'],
         answer: 'getElementbyID',
 
     },
 
+    {
+        title: "What is the link you use in HTML for your Javascript File?",
+        choices: ['<script src="./script.js"></script>', '<script My Javascript goes here ></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
+        answer: 1
+    },
     {
         title: "What charactes do you use to Comment out a line of code in Javascript?",
         choices: ['//', '**', '<!--', '&&'],
@@ -59,58 +58,52 @@ const questions = [
     }
 ];
 
-var currentQuestion = 0;
+var currentQuestionIndex = 0;
+var currentChoices = 0;
 // var questionString = JSON.stringify(questions)
 // var questionString = JSON.parse(questions)
 
-var questionsSelector = document.querySelector("#questions");
-var choicesSelector = document.querySelector("#choices");
+// var questionsSelector = document.querySelector("#questions");
+// var choicesSelector = document.querySelector("#choices");
+
+// var currentQuestion = questions[currentQuestionIndex];
 
 myTimer.addEventListener("click", function () {
+    var currentQuestion = questions[currentQuestionIndex];
+    var titleElement = document.querySelector("#questions");
+    titleElement.textContent = currentQuestion.title;
 
-    questionsSelector.textContent = `New Question: ${questions[1]}`
-    choicesSelector.textContent = `Choices: ${choices[1]}`
+    var currentChoices = document.querySelector("#choices");
+    currentChoices.textContent = currentQuestion.choices;
+
+
+    // questionsSelector.textContent = `New Question: ${questions[1]}`
+    // choicesSelector.textContent = `Choices: ${choices[1]}`
+
     // for (let i = 0; i < questions.length; i++) {
     //     var question = questions[i].question;
     //     document.textContent(questions);
     //     var options = questions[i].choices;
 
     // }
+    // var currentChoices = document.querySelector("#choices");
 
+    // TEST!
+    currentChoices.innerHTML = "";
+
+    currentQuestion.choices.forEach(function (choice, i) {
+        var choicesButtons = document.createElement("button");
+        choicesButtons.setAttribute("class", "choice");
+        choicesButtons.setAttribute("value", choice)
+        choicesButtons.textContent = choice;
+        // choicesButtons.textContent = choice;
+
+        console.log(choicesButtons)
+
+        // choicesButtons.onClick = questionClick;
+
+        currentChoices.appendChild(choicesButtons);
+
+
+    })
 })
-// TEST!
-
-// TEST!
-
-
-// Questions:
-// 1. What is the link you use in HTML for your Javascript File
-// <script src="./script.js"></script>
-// <script My Javascript goes here ></script>
-// <script id="./script.js"></script>
-// <link rel="stylesheet" href="./assets/style.css">
-
-
-// 2. How do you get an element by it's ID
-//     getElementbyID
-//     getID
-//     idGet
-//     #getElement
-
-// 3. What charactes do you use to Comment out a line of code in Javascript
-//     //
-//     **
-//     <!--
-//     %%
-
-// 4. What do you use in VS code to run Javascript in the terminal window?
-//     node.js
-//     runJavascript.js
-//     app.js
-//     console.log Javascript
-
-// Bonus: What is your favorite programming Language:
-//     Javascript
-//     Python
-//     CSS
-//     HTML
