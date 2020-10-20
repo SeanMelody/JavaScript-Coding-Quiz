@@ -1,51 +1,13 @@
 // Variables
-
-// var timerCountdown = document.querySelector("#timer");
-// var count = 100
-
-// Timer Countdown!
-
-// var timerCountdown = document.querySelector("#timer");
-
-// var count = 10
-// function setTime() {
-//     var timer = setInterval(function () {
-//         count--
-//         timerCountdown.textContent = `${count} Seconds Remaining`
-//         if (count === 0) {
-
-//             timerCountdown.textContent = "GAME OVER!!!"
-//             clearInterval(timer)
-//         }
-//     }, 1000)
-// }
-
-// setTime()
-
-
-// document.getElementById("startButton").addEventListener("click", theTime())
-// //     document.getElementById("demo").innerHTML = "Hello World";
-// //   });
-// function theTime() {
-//     console.log(count)
-// }
-// theTime()
-
-
-// TEST!
-
-
-// var startTimer = document.querySelector("#startTimer").addEventListener("click", startTime());
-
-
 var myTimer = document.querySelector("#myTimer");
 var timerCountdown = document.querySelector("#timer");
 
 var count = 10
 
-
+// Timer Function
 myTimer.addEventListener("click", function () {
     function setTime() {
+        // myTimer.textContent = "Restart"
         var timer = setInterval(function () {
             count--
             timerCountdown.textContent = `${count} Seconds Remaining`
@@ -61,6 +23,62 @@ myTimer.addEventListener("click", function () {
 
 })
 
+
+
+
+const questions = [
+    {
+        question: "What is the link you use in HTML for your Javascript File?",
+        choices: ['<script src="./script.js"></script>', '<script My Javascript goes here ></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
+        answer: 1
+    },
+
+    {
+        title: "How do you get an element by it's ID?",
+        choices: ['getElementbyID', 'getID', 'idGet', '#getElement'],
+        answer: 'getElementbyID',
+
+    },
+
+    {
+        title: "What charactes do you use to Comment out a line of code in Javascript?",
+        choices: ['//', '**', '<!--', '&&'],
+        answer: '//',
+    },
+
+    {
+        title: "What do you use in VS code to run Javascript in the terminal window?",
+        choices: ['node.js', 'runJavascript', 'jsapp.js', 'console.log Javascript'],
+        answer: 'node.js',
+    },
+
+    {
+        title: "What is your favorite programming language?",
+        choices: ['Javascript', 'Not Javascript', 'Javascript', 'Javascript'],
+        answer: 'Javascript',
+    }
+];
+
+var currentQuestion = 0;
+// var questionString = JSON.stringify(questions)
+// var questionString = JSON.parse(questions)
+
+var questionsSelector = document.querySelector("#questions");
+var choicesSelector = document.querySelector("#choices");
+
+myTimer.addEventListener("click", function () {
+
+    questionsSelector.textContent = `New Question: ${questions[1]}`
+    choicesSelector.textContent = `Choices: ${choices[1]}`
+    // for (let i = 0; i < questions.length; i++) {
+    //     var question = questions[i].question;
+    //     document.textContent(questions);
+    //     var options = questions[i].choices;
+
+    // }
+
+})
+// TEST!
 
 // TEST!
 
