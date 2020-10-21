@@ -87,6 +87,10 @@ content h3{
     padding-top: 50px;
 }
 
+#results {
+    font-size: 36px;
+}
+
 footer {
     text-align: center;
     background-color: teal;

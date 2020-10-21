@@ -5,10 +5,12 @@ var results = document.querySelector("#results");
 
 var count = 100
 
-// Timer Function
+// Timer Function starts when user hits Start Button
 myTimer.addEventListener("click", function () {
     function setTime() {
-        // myTimer.textContent = "Restart"
+        // Changes the text of Button after clicked
+        myTimer.textContent = "Refresh the Page to Restart Quiz"
+        // Timer Counts Down from 100 seconds
         var timer = setInterval(function () {
             count--
             timerCountdown.textContent = `${count} Seconds Remaining`
@@ -25,9 +27,8 @@ myTimer.addEventListener("click", function () {
 })
 
 
-
-
-const questions = [
+// Questions Array!
+var questions = [
     {
         title: "How do you get an element by it's ID?",
         choices: ['getElementbyID', 'getID', 'idGet', '#getElement'],
@@ -41,7 +42,7 @@ const questions = [
         answer: '<script src="./script.js"></script>'
     },
     {
-        title: "What charactes do you use to Comment out a line of code in Javascript?",
+        title: "What characters do you use to Comment out a line of code in Javascript?",
         choices: ['//', '**', '<!--', '&&'],
         answer: '//',
     },
@@ -59,10 +60,14 @@ const questions = [
     }
 ];
 
+// Set Question Index to 0
 var currentQuestionIndex = 0;
+// Set current Choice to 0
 var currentChoices = 0;
 
+// Function to get and print a question to page
 function getQuestion() {
+    // Activated with Start Button Click
     myTimer.addEventListener("click", function () {
         var currentQuestion = questions[currentQuestionIndex];
         var titleElement = document.querySelector("#questions");
@@ -70,8 +75,6 @@ function getQuestion() {
 
         var currentChoices = document.querySelector("#choices");
         currentChoices.textContent = currentQuestion.choices;
-
-
 
 
         currentChoices.innerHTML = "";
@@ -82,49 +85,73 @@ function getQuestion() {
             choicesButtons.setAttribute("value", choice)
             choicesButtons.textContent = choice;
 
+
+
             choicesButtons.onclick = questionGuess;
 
             currentChoices.appendChild(choicesButtons);
 
 
         })
-    })
-}
-function questionGuess() {
-    // check if user guessed wrong
-    if (this.value !== questions[currentQuestionIndex].answer) {
-        // penalize time
-        count -= 10;
 
-        if (count < 0) {
-            count = 0;
+
+
+    })
+
+
+    // Checking User Guess and penalizing if guess wrong
+    function questionGuess() {
+        // check if user guessed wrong
+        if (this.value !== questions[currentQuestionIndex].answer) {
+            // penalize time
+            count -= 10;
+
+            if (count < 0) {
+                count = 0;
+            }
+            // Print Result of Guess to Page
+            timerCountdown.textContent = count;
+            results.textContent = "Wrong!";
+            getQuestion()
+
+        } else {
+            // Print Result of Guess to Page
+            results.textContent = "Correct!";
+            getQuestion()
         }
 
-        timerCountdown.textContent = count;
 
-        results.textContent = "Wrong!";
-    } else {
 
-        results.textContent = "Correct!";
+
+        // currentQuestionIndex++;  
+
+
     }
 
-    currentQuestionIndex++;
 
-    // check if we've run out of questions
-    if (currentQuestionIndex === questions.length) {
-        quizEnd();
-    } else {
-        getQuestion();
-    }
 }
 
-
-
-if (currentQuestionIndex === questions.length) {
-    quizEnd();
-} else {
+if (currentQuestionIndex !== questions.length) {
+    console.log("Next Question")
     getQuestion();
+} else {
+    console.log("quiz Over")
+    quizEnd();
 }
+
+userGuess = 0
+window.localStorage.setItem("user", userGuess)
+var user = window.localStorage.getItem("user")
+
+
+
+
+// STILL NEED
+
+// High Score Saving and Results Printed
+userGuess = 0
+window.localStorage.setItem("user", userGuess)
+var user = window.localStorage.getItem("user")
 
 
     // TEST!
