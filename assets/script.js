@@ -17,7 +17,7 @@ myTimer.addEventListener("click", function () {
             if (count === 0) {
 
                 timerCountdown.textContent = "GAME OVER!!!"
-                clearInterval(timer)
+                clearInterval(count)
             }
         }, 1000)
     }
@@ -97,29 +97,101 @@ function getQuestion() {
 
 
     })
-
+    // currentQuestionIndex++;
 
     // Checking User Guess and penalizing if guess wrong
     function questionGuess() {
-        // check if user guessed wrong
-        if (this.value !== questions[currentQuestionIndex].answer) {
-            // penalize time
-            count -= 10;
-
-            if (count < 0) {
-                count = 0;
-            }
-            // Print Result of Guess to Page
-            timerCountdown.textContent = count;
-            results.textContent = "Wrong!";
-            getQuestion()
-
+        if (currentQuestionIndex === 6) {
+            console.log(count)
         } else {
-            // Print Result of Guess to Page
-            results.textContent = "Correct!";
-            getQuestion()
-        }
+            console.log("Next Question")
 
+            // check if user guessed wrong
+            if (this.value !== questions[currentQuestionIndex].answer) {
+                // penalize time
+                count -= 10;
+
+                if (count < 0) {
+                    count = 0;
+                }
+                // Print Result of Guess to Page
+                timerCountdown.textContent = count;
+                results.textContent = "Wrong!";
+                // if (currentQuestionIndex == 6) {
+                //     console.log(count)
+                // } else {
+                //     console.log("Next Question")
+
+                currentQuestionIndex++;
+                var currentQuestion = questions[currentQuestionIndex];
+                var titleElement = document.querySelector("#questions");
+                titleElement.textContent = currentQuestion.title;
+
+                var currentChoices = document.querySelector("#choices");
+                currentChoices.textContent = currentQuestion.choices;
+
+
+                currentChoices.innerHTML = "";
+
+                currentQuestion.choices.forEach(function (choice, i) {
+                    var choicesButtons = document.createElement("button");
+                    choicesButtons.setAttribute("class", "choice");
+                    choicesButtons.setAttribute("value", choice)
+                    choicesButtons.textContent = choice;
+
+
+
+                    choicesButtons.onclick = questionGuess;
+
+                    currentChoices.appendChild(choicesButtons);
+
+
+                })
+                // }
+            } else {
+                // Print Result of Guess to Page
+                results.textContent = "Correct!";
+                // if (currentQuestionIndex == 6) {
+                //     console.log(count)
+                // } else {
+                //     console.log("Next Question")
+
+
+                currentQuestionIndex++;
+                var currentQuestion = questions[currentQuestionIndex];
+                var titleElement = document.querySelector("#questions");
+                titleElement.textContent = currentQuestion.title;
+
+                var currentChoices = document.querySelector("#choices");
+                currentChoices.textContent = currentQuestion.choices;
+
+
+                currentChoices.innerHTML = "";
+
+                currentQuestion.choices.forEach(function (choice, i) {
+                    var choicesButtons = document.createElement("button");
+                    choicesButtons.setAttribute("class", "choice");
+                    choicesButtons.setAttribute("value", choice)
+                    choicesButtons.textContent = choice;
+
+
+
+                    choicesButtons.onclick = questionGuess;
+
+                    currentChoices.appendChild(choicesButtons);
+
+
+                })
+                // getQuestion()
+            }
+        }
+        // if (currentQuestionIndex === questions.length) {
+        //     console.log("quiz Over")
+        //     // getQuestion();
+        // } else {
+        //     console.log("nextQestion")
+        //     // QUIZ END
+        // }
 
 
 
@@ -130,18 +202,24 @@ function getQuestion() {
 
 
 }
+getQuestion()
+// if (currentQuestionIndex === questions.length) {
+//     console.log("END")
+//     getQuestion();
+// } else {
+//     console.log("quiz Over")
+//     getQuestion();
+//     // quizEnd();
+// }
 
-if (currentQuestionIndex !== questions.length) {
-    console.log("Next Question")
-    getQuestion();
-} else {
-    console.log("quiz Over")
-    quizEnd();
+function quizEnd() {
+    if (currentQuestionIndex === questions.length) {
+        console.log("END")
+    }
 }
-
-userGuess = 0
-window.localStorage.setItem("user", userGuess)
-var user = window.localStorage.getItem("user")
+// userGuess = 0
+// window.localStorage.setItem("user", userGuess)
+// var user = window.localStorage.getItem("user")
 
 
 
