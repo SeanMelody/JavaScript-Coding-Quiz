@@ -1,6 +1,7 @@
 // Variables
 var myTimer = document.querySelector("#myTimer");
 var timerCountdown = document.querySelector("#timer");
+var results = document.querySelector("#results");
 
 var count = 100
 
@@ -37,7 +38,7 @@ const questions = [
     {
         title: "What is the link you use in HTML for your Javascript File?",
         choices: ['<script src="./script.js"></script>', '<script My Javascript goes here ></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
-        answer: 1
+        answer: '<script src="./script.js"></script>'
     },
     {
         title: "What charactes do you use to Comment out a line of code in Javascript?",
@@ -60,50 +61,72 @@ const questions = [
 
 var currentQuestionIndex = 0;
 var currentChoices = 0;
-// var questionString = JSON.stringify(questions)
-// var questionString = JSON.parse(questions)
 
-// var questionsSelector = document.querySelector("#questions");
-// var choicesSelector = document.querySelector("#choices");
+function getQuestion() {
+    myTimer.addEventListener("click", function () {
+        var currentQuestion = questions[currentQuestionIndex];
+        var titleElement = document.querySelector("#questions");
+        titleElement.textContent = currentQuestion.title;
 
-// var currentQuestion = questions[currentQuestionIndex];
-
-myTimer.addEventListener("click", function () {
-    var currentQuestion = questions[currentQuestionIndex];
-    var titleElement = document.querySelector("#questions");
-    titleElement.textContent = currentQuestion.title;
-
-    var currentChoices = document.querySelector("#choices");
-    currentChoices.textContent = currentQuestion.choices;
+        var currentChoices = document.querySelector("#choices");
+        currentChoices.textContent = currentQuestion.choices;
 
 
-    // questionsSelector.textContent = `New Question: ${questions[1]}`
-    // choicesSelector.textContent = `Choices: ${choices[1]}`
 
-    // for (let i = 0; i < questions.length; i++) {
-    //     var question = questions[i].question;
-    //     document.textContent(questions);
-    //     var options = questions[i].choices;
 
-    // }
-    // var currentChoices = document.querySelector("#choices");
+        currentChoices.innerHTML = "";
+
+        currentQuestion.choices.forEach(function (choice, i) {
+            var choicesButtons = document.createElement("button");
+            choicesButtons.setAttribute("class", "choice");
+            choicesButtons.setAttribute("value", choice)
+            choicesButtons.textContent = choice;
+
+            choicesButtons.onclick = questionGuess;
+
+            currentChoices.appendChild(choicesButtons);
+
+
+        })
+    })
+}
+function questionGuess() {
+    // check if user guessed wrong
+    if (this.value !== questions[currentQuestionIndex].answer) {
+        // penalize time
+        count -= 10;
+
+        if (count < 0) {
+            count = 0;
+        }
+
+        timerCountdown.textContent = count;
+
+        results.textContent = "Wrong!";
+    } else {
+
+        results.textContent = "Correct!";
+    }
+
+    currentQuestionIndex++;
+
+    // check if we've run out of questions
+    if (currentQuestionIndex === questions.length) {
+        quizEnd();
+    } else {
+        getQuestion();
+    }
+}
+
+
+
+if (currentQuestionIndex === questions.length) {
+    quizEnd();
+} else {
+    getQuestion();
+}
+
 
     // TEST!
-    currentChoices.innerHTML = "";
 
-    currentQuestion.choices.forEach(function (choice, i) {
-        var choicesButtons = document.createElement("button");
-        choicesButtons.setAttribute("class", "choice");
-        choicesButtons.setAttribute("value", choice)
-        choicesButtons.textContent = choice;
-        // choicesButtons.textContent = choice;
-
-        console.log(choicesButtons)
-
-        // choicesButtons.onClick = questionClick;
-
-        currentChoices.appendChild(choicesButtons);
-
-
-    })
-})
+    // TEST!
