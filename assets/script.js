@@ -11,25 +11,36 @@ var highScoresList = document.querySelector(".highscores-list");
 var count = 100
 
 // Timer Function starts when user hits Start Button
-myTimer.addEventListener("click", function () {
-    function setTime() {
-        // Changes the text of Button after clicked
-        myTimer.textContent = "Refresh the Page to Restart Quiz"
-        // Timer Counts Down from 100 seconds
-        var timer = setInterval(function () {
+function setTime() {
+    // Changes the text of Button after clicked
+    myTimer.textContent = "Refresh the Page to Restart Quiz"
+    // Timer Counts Down from 100 seconds
+
+
+    setInterval(function () {
+        if (count !== 0) {
             count--
             timerCountdown.textContent = `${count} Seconds Remaining`
-            if (count === 0) {
+        } else if
+            (count === 0) {
 
-                timerCountdown.textContent = "GAME OVER!!!"
-                clearInterval(count)
-            }
-        }, 1000)
-    }
+            timerCountdown.textContent = "GAME OVER!!!"
+            clearInterval(count)
+        }
 
-    setTime()
+    }, 1000)
 
-})
+}
+
+
+
+
+
+// Timer Function starts when user hits Start Button
+myTimer.addEventListener("click", setTime)
+
+
+
 
 
 // Questions Array Yeay!
@@ -127,10 +138,49 @@ function getQuestion() {
 
             // IF END OF QUESTIONS
             if (currentQuestionIndex === 5) {
+
                 console.log(count)
 
 
 
+                userNameInput = prompt("What's your name?");
+
+                console.log(userNameInput)
+
+
+                var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+                // format new score object for current user
+                var newScore = {
+                    name: userNameInput,
+                    score: count * 100,
+                };
+
+                // save to localstorage
+                highscores.push(newScore);
+                window.localStorage.setItem("highscores", JSON.stringify(highscores));
+                // highscores = JSON.parse(window.localStorage.getItem("highscores"));
+
+
+
+                // var highScoresList = document.querySelector(".highscores-list");
+                results.textContent = `${userNameInput} Your score is: ${count}`;
+                // highScoresList.textContent = highscores.name + highscores.score;
+
+                highscores.forEach(function (score) {
+                    // create li tag for each high score
+                    var listOfScores = document.createElement("li");
+                    listOfScores.textContent = score.name + " : " + score.score;
+
+                    // display on page
+                    var orderListOfScores = document.getElementById("highscores");
+                    orderListOfScores.appendChild(listOfScores);
+                });
+
+
+
+
+                count = 0
             } else {
 
                 // Loop to next Question
@@ -167,23 +217,51 @@ function getQuestion() {
             results.textContent = "Correct!";
 
             // IF END OF QUESTIONS
+
             if (currentQuestionIndex === 5) {
+
                 console.log(count)
 
-                userName = prompt("What's your name?")
-
-                results.textContent = `${userName} Your score is: ${count}`;
 
 
+                userNameInput = prompt("What's your name?");
+
+                console.log(userNameInput)
+
+
+                var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+                // format new score object for current user
+                var newScore = {
+                    name: userNameInput,
+                    score: count * 100,
+                };
+
+                // save to localstorage
+                highscores.push(newScore);
+                window.localStorage.setItem("highscores", JSON.stringify(highscores));
+                // highscores = JSON.parse(window.localStorage.getItem("highscores"));
 
 
 
-                window.localStorage.setItem('user', count)
-                // var userInitials = window.localStorage.getItem(value)
-                highScoresList.textContent = `${userName} Your score is: ${count}`;
+                // var highScoresList = document.querySelector(".highscores-list");
+                results.textContent = `${userNameInput} Your score is: ${count}`;
+                // highScoresList.textContent = highscores.name + highscores.score;
+
+                highscores.forEach(function (score) {
+                    // create li tag for each high score
+                    var listOfScores = document.createElement("li");
+                    listOfScores.textContent = score.name + " : " + score.score;
+
+                    // display on page
+                    var orderListOfScores = document.getElementById("highscores");
+                    orderListOfScores.appendChild(listOfScores);
+                });
 
 
 
+
+                count = 0
             } else {
                 currentQuestionIndex++;
                 var currentQuestion = questions[currentQuestionIndex];
@@ -219,21 +297,3 @@ function getQuestion() {
 getQuestion()
 
 
-function quizEnd() {
-    if (currentQuestionIndex === questions.length) {
-        console.log("END")
-    }
-}
-
-
-// STILL NEED
-
-// High Score Saving and Results Printed
-userGuess = 0
-window.localStorage.setItem("user", userGuess)
-var user = window.localStorage.getItem("user")
-
-
-    // TEST!
-
-    // TEST!
