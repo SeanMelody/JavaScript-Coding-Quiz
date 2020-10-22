@@ -2,7 +2,12 @@
 var myTimer = document.querySelector("#myTimer");
 var timerCountdown = document.querySelector("#timer");
 var results = document.querySelector("#results");
+var resultsInput = document.querySelector("#results-input");
+var highScoresList = document.querySelector(".highscores-list");
 
+// var winner = window.localStorage
+
+// Counter Start Time
 var count = 100
 
 // Timer Function starts when user hits Start Button
@@ -27,7 +32,7 @@ myTimer.addEventListener("click", function () {
 })
 
 
-// Questions Array!
+// Questions Array Yeay!
 var questions = [
     {
         title: "How do you get an element by it's ID?",
@@ -57,12 +62,18 @@ var questions = [
         title: "What is your favorite programming language?",
         choices: ['Javascript', 'Not Javascript', 'Javascript', 'Javascript'],
         answer: 'Javascript',
-    }
+    },
+    // Final Array to indicate end of list/Quiz
+    {
+        title: "End of Quiz!",
+        choices: ['Add your score!'],
+        answer: 'Add your score!',
+    },
 ];
 
 // Set Question Index to 0
 var currentQuestionIndex = 0;
-// Set current Choice to 0
+// Set Current Choice to 0
 var currentChoices = 0;
 
 // Function to get and print a question to page
@@ -71,14 +82,16 @@ function getQuestion() {
     myTimer.addEventListener("click", function () {
         var currentQuestion = questions[currentQuestionIndex];
         var titleElement = document.querySelector("#questions");
+        // Print the Question
         titleElement.textContent = currentQuestion.title;
 
         var currentChoices = document.querySelector("#choices");
         currentChoices.textContent = currentQuestion.choices;
 
-
+        // Empty Out the Choices
         currentChoices.innerHTML = "";
 
+        // Loop Through the Choices
         currentQuestion.choices.forEach(function (choice, i) {
             var choicesButtons = document.createElement("button");
             choicesButtons.setAttribute("class", "choice");
@@ -86,7 +99,7 @@ function getQuestion() {
             choicesButtons.textContent = choice;
 
 
-
+            // Make the choices Buttons!
             choicesButtons.onclick = questionGuess;
 
             currentChoices.appendChild(choicesButtons);
@@ -97,131 +110,120 @@ function getQuestion() {
 
 
     })
-    // currentQuestionIndex++;
 
-    // Checking User Guess and penalizing if guess wrong
     function questionGuess() {
-        if (currentQuestionIndex === 6) {
-            console.log(count)
-        } else {
-            console.log("Next Question")
 
-            // check if user guessed wrong
-            if (this.value !== questions[currentQuestionIndex].answer) {
-                // penalize time
-                count -= 10;
-
-                if (count < 0) {
-                    count = 0;
-                }
-                // Print Result of Guess to Page
-                timerCountdown.textContent = count;
-                results.textContent = "Wrong!";
-                // if (currentQuestionIndex == 6) {
-                //     console.log(count)
-                // } else {
-                //     console.log("Next Question")
-
-                currentQuestionIndex++;
-                var currentQuestion = questions[currentQuestionIndex];
-                var titleElement = document.querySelector("#questions");
-                titleElement.textContent = currentQuestion.title;
-
-                var currentChoices = document.querySelector("#choices");
-                currentChoices.textContent = currentQuestion.choices;
-
-
-                currentChoices.innerHTML = "";
-
-                currentQuestion.choices.forEach(function (choice, i) {
-                    var choicesButtons = document.createElement("button");
-                    choicesButtons.setAttribute("class", "choice");
-                    choicesButtons.setAttribute("value", choice)
-                    choicesButtons.textContent = choice;
-
-
-
-                    choicesButtons.onclick = questionGuess;
-
-                    currentChoices.appendChild(choicesButtons);
-
-
-                })
-                // }
-            } else {
-                // Print Result of Guess to Page
-                results.textContent = "Correct!";
-                // if (currentQuestionIndex == 6) {
-                //     console.log(count)
-                // } else {
-                //     console.log("Next Question")
-
-
-                currentQuestionIndex++;
-                var currentQuestion = questions[currentQuestionIndex];
-                var titleElement = document.querySelector("#questions");
-                titleElement.textContent = currentQuestion.title;
-
-                var currentChoices = document.querySelector("#choices");
-                currentChoices.textContent = currentQuestion.choices;
-
-
-                currentChoices.innerHTML = "";
-
-                currentQuestion.choices.forEach(function (choice, i) {
-                    var choicesButtons = document.createElement("button");
-                    choicesButtons.setAttribute("class", "choice");
-                    choicesButtons.setAttribute("value", choice)
-                    choicesButtons.textContent = choice;
-
-
-
-                    choicesButtons.onclick = questionGuess;
-
-                    currentChoices.appendChild(choicesButtons);
-
-
-                })
-                // getQuestion()
+        // check if user guessed wrong
+        if (this.value !== questions[currentQuestionIndex].answer) {
+            // penalize time 10 seconds
+            count -= 10;
+            // Make sure there is time to penalzie
+            if (count < 0) {
+                count = 0;
             }
+            // Print Result of Guess to Page
+            timerCountdown.textContent = count;
+            results.textContent = "Wrong!";
+
+            // IF END OF QUESTIONS
+            if (currentQuestionIndex === 5) {
+                console.log(count)
+
+
+
+            } else {
+
+                // Loop to next Question
+                currentQuestionIndex++;
+                var currentQuestion = questions[currentQuestionIndex];
+                var titleElement = document.querySelector("#questions");
+                // Print New Question
+                titleElement.textContent = currentQuestion.title;
+
+                var currentChoices = document.querySelector("#choices");
+                // Print New Question
+                currentChoices.textContent = currentQuestion.choices;
+
+                // Clear out old Choices
+                currentChoices.innerHTML = "";
+
+                // Make choices Buttons
+                currentQuestion.choices.forEach(function (choice, i) {
+                    var choicesButtons = document.createElement("button");
+                    choicesButtons.setAttribute("class", "choice");
+                    choicesButtons.setAttribute("value", choice)
+                    choicesButtons.textContent = choice;
+
+                    choicesButtons.onclick = questionGuess;
+
+                    currentChoices.appendChild(choicesButtons);
+
+
+                })
+            }
+
+        } else {
+            // Print Result of Guess to Page
+            results.textContent = "Correct!";
+
+            // IF END OF QUESTIONS
+            if (currentQuestionIndex === 5) {
+                console.log(count)
+
+                userName = prompt("What's your name?")
+
+                results.textContent = `${userName} Your score is: ${count}`;
+
+
+
+
+
+                window.localStorage.setItem('user', count)
+                // var userInitials = window.localStorage.getItem(value)
+                highScoresList.textContent = `${userName} Your score is: ${count}`;
+
+
+
+            } else {
+                currentQuestionIndex++;
+                var currentQuestion = questions[currentQuestionIndex];
+                var titleElement = document.querySelector("#questions");
+                titleElement.textContent = currentQuestion.title;
+
+                var currentChoices = document.querySelector("#choices");
+                currentChoices.textContent = currentQuestion.choices;
+
+
+                currentChoices.innerHTML = "";
+
+                currentQuestion.choices.forEach(function (choice, i) {
+                    var choicesButtons = document.createElement("button");
+                    choicesButtons.setAttribute("class", "choice");
+                    choicesButtons.setAttribute("value", choice)
+                    choicesButtons.textContent = choice;
+
+
+
+                    choicesButtons.onclick = questionGuess;
+
+                    currentChoices.appendChild(choicesButtons);
+
+
+                })
+            }
+
         }
-        // if (currentQuestionIndex === questions.length) {
-        //     console.log("quiz Over")
-        //     // getQuestion();
-        // } else {
-        //     console.log("nextQestion")
-        //     // QUIZ END
-        // }
-
-
-
-        // currentQuestionIndex++;  
-
 
     }
-
-
 }
 getQuestion()
-// if (currentQuestionIndex === questions.length) {
-//     console.log("END")
-//     getQuestion();
-// } else {
-//     console.log("quiz Over")
-//     getQuestion();
-//     // quizEnd();
-// }
+
 
 function quizEnd() {
     if (currentQuestionIndex === questions.length) {
         console.log("END")
     }
 }
-// userGuess = 0
-// window.localStorage.setItem("user", userGuess)
-// var user = window.localStorage.getItem("user")
-
-
 
 
 // STILL NEED
