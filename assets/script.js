@@ -5,7 +5,7 @@ var results = document.querySelector("#results");
 var resultsInput = document.querySelector("#results-input");
 var highScoresList = document.querySelector(".highscores-list");
 
-// var winner = window.localStorage
+
 
 // Counter Start Time
 var count = 100
@@ -33,28 +33,22 @@ function setTime() {
 }
 
 
-
-
-
 // Timer Function starts when user hits Start Button
 myTimer.addEventListener("click", setTime)
-
-
-
 
 
 // Questions Array Yeay!
 var questions = [
     {
         title: "How do you get an element by it's ID?",
-        choices: ['getElementbyID', 'getID', 'idGet', '#getElement'],
+        choices: ['idGet', 'getID', 'getElementbyID', '#getElement'],
         answer: 'getElementbyID',
 
     },
 
     {
         title: "What is the link you use in HTML for your Javascript File?",
-        choices: ['<script src="./script.js"></script>', '<script My Javascript goes here ></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
+        choices: ['<script My Javascript goes here ></script>', '<script src="./script.js"></script>', '<script id="./script.js"></script>', '<link rel="stylesheet" href="./assets/style.css">'],
         answer: '<script src="./script.js"></script>'
     },
     {
@@ -65,13 +59,13 @@ var questions = [
 
     {
         title: "What do you use in VS code to run Javascript in the terminal window?",
-        choices: ['node.js', 'runJavascript', 'jsapp.js', 'console.log Javascript'],
+        choices: ['console.log Javascript', 'runJavascript', 'jsapp.js', 'node.js'],
         answer: 'node.js',
     },
 
     {
         title: "What is your favorite programming language?",
-        choices: ['Javascript', 'Not Javascript', 'Javascript', 'Javascript'],
+        choices: ['Javascript', 'Javascript', 'Javascript', 'Javascript'],
         answer: 'Javascript',
     },
     // Final Array to indicate end of list/Quiz
@@ -164,7 +158,7 @@ function getQuestion() {
 
 
                 // var highScoresList = document.querySelector(".highscores-list");
-                results.textContent = `${userNameInput} Your score is: ${count}`;
+                results.textContent = `${userNameInput} Your score is: ${count * 100}`;
                 // highScoresList.textContent = highscores.name + highscores.score;
 
                 highscores.forEach(function (score) {
@@ -245,7 +239,7 @@ function getQuestion() {
 
 
                 // var highScoresList = document.querySelector(".highscores-list");
-                results.textContent = `${userNameInput} Your score is: ${count}`;
+                results.textContent = `${userNameInput} Your score is: ${count * 100}`;
                 // highScoresList.textContent = highscores.name + highscores.score;
 
                 highscores.forEach(function (score) {
