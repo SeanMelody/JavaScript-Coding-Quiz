@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="./assets/style.css">
     <!-- Favicon Link -->
     <link rel="icon" type="image/png" href="./assets/Favicon.png" />
-    <title>Javascript Coding Quiz!</title>
+    <title>JavaScript Coding Quiz!</title>
 </head>
 
 <body>
     <!-- Header Content -->
     <header>
         <nav class="status-top">
-            <h1>Timed Javascript Coding Challenge</h1>
+            <h1>Timed JavaScript Coding Challenge</h1>
         </nav>
     </header>
 
@@ -28,11 +28,12 @@
                 <!-- 2/3 of page for Description and Start Button -->
                 <div class="col-md-8">
                     <h3>Start the Quiz</h3>
-                    <p">Press the Start Button to start the timer and test your Javascript Skills!
-                        More text here
-                        </p>
-
-                        <button type="button" id="myTimer" class="btn btn-info bg-danger row col-md-12">Start</button>
+                    <p>Press the Start Button to start the timer and test your JavaScript Skills!
+                        You have 100 seconds, so be quick! But be careful, if you answer wrong you will get time
+                        subtracted from the timer! At the end of the quiz, add your name to see all the results!
+                    </p>
+                    <!-- Button to start the quiz AND timer -->
+                    <button type="button" id="myTimer" class="btn btn-info bg-danger row col-md-12">Start</button>
                 </div>
                 <!-- 1/3 of page for Timer Countdown -->
                 <div class="col-md-4">
@@ -49,7 +50,7 @@
 
     </div>
     <content>
-        <!-- Questions and Answers will populate here via Javascript -->
+        <!-- Questions and Answers will populate here via JavaScript -->
         <div class="container">
             <div class="row col-md-12">
                 <div id="questions"></div>
@@ -58,6 +59,7 @@
                 <div id="choices"></div>
             </div>
         </div>
+        <!-- Results of the answer you pick ("Correct" or Wrong") will populate here -->
         </div>
         <div class="container">
             <div class="row col-md-12">
@@ -67,29 +69,19 @@
         </div>
     </content>
 
+    <!-- Footer is where High Scores will be displayed! -->
     <footer class="fixed-bottom">
-
-        <!-- <h2><a href="./highscores.html">View the High Scores</a></h2> -->
-
-        <h2 id="highscores">High Scores: </h2>
+        <!-- High Scores Title -->
+        <h2>HighScores:</h2>
+        <h2 id="highscores"></h2>
         <ul class="highscores-list">
         </ul>
     </footer>
 
 
-    <!-- My Javascript Link -->
+    <!-- My JavaScript Link -->
     <script src="./assets/script.js"></script>
 
-    <!-- Bootstrap Javascript Links -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script> -->
 </body>
 
 </html>

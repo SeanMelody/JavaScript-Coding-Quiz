@@ -1,40 +1,16 @@
+/* Styling for the whole page */
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-decoration: none;
     font-size: 18px;
 }
 
+/* Header Styling */
 header {
     background: teal;
     padding-top: 20px;
     padding-bottom: 20px;
     color: white;
-}
-
-/* body {
-    background-color: lightgray;
-} */
-
-a:link {
-    text-decoration: none;
-    color: white;
-}
-
-a:visited {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-aside {
-    padding-top: 50px;
 }
 
 h1 {
@@ -53,6 +29,17 @@ p {
     text-align: center;
 }
 
+Countdown Timer is here
+aside {
+    padding-top: 50px;
+}
+
+#timer {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* buttons for the quiz answers */
 button {
     display: block;
     margin: 10px;
@@ -64,37 +51,39 @@ button {
     border: 0;
 }
 
-.timer {
-    text-align: center;
-    font-size: 24px;
-}
-
-#timer {
-    text-align: center;
-    font-size: 24px;
-}
-
+/* For the questions as they populate */
 #questions {
     text-align: center;
     font-size: 24px;
 }
 
+/* For the choices as they populate */
 #choices {
     font-size: 18px;
 }
 
+/* each answer's padding */
 content h3{
     padding-top: 50px;
 }
 
+/* results of your guess displayed here */
 #results {
     font-size: 36px;
 }
 
+/* Footer Title and color Display*/
 footer {
     text-align: center;
     background-color: teal;
     color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Footer list is where the High Scores will go once quiz is finished */
+footer li{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
 }
