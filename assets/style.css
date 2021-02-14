@@ -4,13 +4,17 @@
     text-decoration: none;
     font-size: 18px;
 }
+body {
+    background-image: linear-gradient(90deg, rgb(0, 227, 243) 50%,  rgb(67, 253, 67));
+    height: 800px;
+}
 
 /* Header Styling */
 header {
-    background: teal;
+    /* background: rgba(255, 255, 255, 0.3); */
     padding-top: 20px;
     padding-bottom: 20px;
-    color: white;
+    color: black;
 }
 
 h1 {
@@ -29,7 +33,12 @@ p {
     text-align: center;
 }
 
-Countdown Timer is here
+/* body {
+    background-image: linear-gradient(rgb(187, 187, 255), rgb(129, 180, 129));
+    height: 800px;
+} */
+
+/* Countdown Timer is here */
 aside {
     padding-top: 50px;
 }
@@ -45,7 +54,8 @@ button {
     margin: 10px;
     color: white;
     font-size: 100%;
-    background-color: teal;
+    background-color: #d9534f;
+    /* background-color: teal; */
     border-radius: 5px;
     padding: 10px 10px;
     border: 0;
@@ -75,8 +85,8 @@ content h3{
 /* Footer Title and color Display*/
 footer {
     text-align: center;
-    background-color: teal;
-    color: white;
+    /* background-color:rgba(255, 255, 255, 0.8);
+    color: white; */
     padding-top: 10px;
     padding-bottom: 10px;
 }
